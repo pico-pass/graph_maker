@@ -6,59 +6,86 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1112</width>
-    <height>667</height>
+    <width>733</width>
+    <height>571</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="A_btn">
-   <property name="geometry">
-    <rect>
-     <x>850</x>
-     <y>580</y>
-     <width>111</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>A</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="B_btn">
-   <property name="geometry">
-    <rect>
-     <x>980</x>
-     <y>580</y>
-     <width>111</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>B</string>
-   </property>
-  </widget>
-  <widget class="QLCDNumber" name="turb_display">
-   <property name="geometry">
-    <rect>
-     <x>850</x>
-     <y>490</y>
-     <width>241</width>
-     <height>71</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLCDNumber" name="water_display">
-   <property name="geometry">
-    <rect>
-     <x>850</x>
-     <y>400</y>
-     <width>241</width>
-     <height>71</height>
-    </rect>
-   </property>
-  </widget>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QWidget" name="widget_3" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QWidget" name="widget_5" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QWidget" name="water_level" native="true"/>
+         </item>
+         <item>
+          <widget class="QWidget" name="water_turb" native="true"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget_4" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QWidget" name="both" native="true"/>
+         </item>
+         <item>
+          <widget class="QWidget" name="widget" native="true">
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <widget class="QLCDNumber" name="water_display"/>
+            </item>
+            <item>
+             <widget class="QLCDNumber" name="turb_display"/>
+            </item>
+            <item>
+             <widget class="QWidget" name="widget_2" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout">
+               <item>
+                <widget class="QPushButton" name="B_btn">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>B</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="A_btn">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>A</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>
