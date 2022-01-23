@@ -1,0 +1,5 @@
+{
+    "board": "arduino:avr:uno",
+    "sketch": "random_ard\\random_ard.ino",
+    "port": "COM5"
+}

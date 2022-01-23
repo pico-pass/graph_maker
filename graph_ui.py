@@ -14,12 +14,34 @@ class main_gui(QWidget):
         super().__init__()
         self.ui = GUI()
         self.ui.setupUi(self)
+        self.th = thread(parent = self)
+        self.th.thread_sg.connect(self.water_display)
         self.init()
         self.show()
     
     def init(self):
         self.fig = plt.figure()
         self.canvas = FigureCanvas(self.fig)
+        self.ui.water_level = QVBoxLayout()
+        self.ui.water_level.addWidget(self.canvas)
+        
+        self.ui.A_btn.clicked.connect(self.th.rt_dplay)
+        
+    def water_display(self, srnum):
+        self.ui.water_display.display(srnum)
+        pass
+        
+class thread(QThread):
+    thread_sg = pyqtSignal(int)
+    def __init__(self, parent = None):
+        super().__init__()
+    
+    def rt_dplay(self):
+        while True:
+            srnum = sn
+            self.thread_sg.emit(srnum)
+            
+            
         
 
 
