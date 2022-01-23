@@ -18,13 +18,13 @@
     <widget class="QWidget" name="widget_3" native="true">
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QWidget" name="widget_5" native="true">
+       <widget class="QWidget" name="entire_widget" native="true">
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QWidget" name="water_level" native="true"/>
+          <layout class="QVBoxLayout" name="water_level"/>
          </item>
          <item>
-          <widget class="QWidget" name="water_turb" native="true"/>
+          <layout class="QVBoxLayout" name="water_turb"/>
          </item>
         </layout>
        </widget>

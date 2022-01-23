@@ -6,9 +6,9 @@ void setup() {
 void loop() {
   // 0 에서 299 사이 임의 값 출력
   int randNumber = random(700);
-  Serial.print(randNumber);
-  Serial.print(",");
-  Serial.print(randNumber);
-  Serial.print("/");
+  Serial.println(randNumber);
+  Serial.println(",");
+  Serial.println(randNumber);
+  Serial.println("/");
   delay(100);
 }

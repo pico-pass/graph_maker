@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'd:\OneDrive\OneDrive - 용문고등학교\중요폴더\파이썬\graph_maker\GUI.ui'
+# Form implementation generated from reading ui file 'c:\Users\yumsa\OneDrive\문서\GitHub\graph_maker\GUI.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -21,17 +21,17 @@ class Ui_Form(object):
         self.widget_3.setObjectName("widget_3")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget_3)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.widget_5 = QtWidgets.QWidget(self.widget_3)
-        self.widget_5.setObjectName("widget_5")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.widget_5)
+        self.entire_widget = QtWidgets.QWidget(self.widget_3)
+        self.entire_widget.setObjectName("entire_widget")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.entire_widget)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.water_level = QtWidgets.QWidget(self.widget_5)
+        self.water_level = QtWidgets.QVBoxLayout()
         self.water_level.setObjectName("water_level")
-        self.horizontalLayout_3.addWidget(self.water_level)
-        self.water_turb = QtWidgets.QWidget(self.widget_5)
+        self.horizontalLayout_3.addLayout(self.water_level)
+        self.water_turb = QtWidgets.QVBoxLayout()
         self.water_turb.setObjectName("water_turb")
-        self.horizontalLayout_3.addWidget(self.water_turb)
-        self.verticalLayout_2.addWidget(self.widget_5)
+        self.horizontalLayout_3.addLayout(self.water_turb)
+        self.verticalLayout_2.addWidget(self.entire_widget)
         self.widget_4 = QtWidgets.QWidget(self.widget_3)
         self.widget_4.setObjectName("widget_4")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget_4)
