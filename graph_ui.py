@@ -1,10 +1,12 @@
 import sys
 import serial
+import time
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from Ui_GUI import Ui_Form as GUI
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
+import matplotlib.animation as animation
 import matplotlib.pyplot as plt
 import numpy as np
 import random
@@ -26,22 +28,20 @@ class main_gui(QWidget):
     def init(self):
         self.fig = plt.figure()
         self.canvas = FigureCanvas(self.fig)
-        self.ui.water_level.addWidget(self.canvas)
+        self.ui.big_brother.addWidget(self.canvas)
         
         self.fig2 = plt.figure()
         self.canvas2 = FigureCanvas(self.fig2)
-        self.ui.water_turb.addWidget(self.canvas2)        
+        self.ui.big_brother.addWidget(self.canvas2)        
         
         self.ui.A_btn.clicked.connect(self.th.make_random)
+        self.ax = self.fig.add_subplot(211, xlim=(-10, 0), ylim=(0, 1024))
         
-        self.ax = self.canvas.figure.subplots()
-        self.ax.plot([0, 1, 2], [1, 1, 2], '-')
-        
-        self.bx = self.canvas2.figure.subplots()
-        self.bx.plot([0, 25, 50, 75, 100], [1, 33, 73, 12, 42], '-')
+        self.bx = self.fig.add_subplot(212, xlim=(-10, 0), ylim=(0, 1024))
+        self.bx.plot([-2, -1, 0, 1, 2], [1, 33, 73, 12, 42], '-')
         
     def water_display(self, srnum):
-        self.ui.water_display.display(srnum)
+        self.ui.water_display1.display(srnum)
         
 class thread(QThread):
     thread_sg = pyqtSignal(int)
@@ -60,7 +60,6 @@ class thread(QThread):
             self.thread_sg.emit(srnum)
             self.Qsleep(0.5)
             
-
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = main_gui()

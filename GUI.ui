@@ -18,48 +18,27 @@
     <widget class="QWidget" name="widget_3" native="true">
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QWidget" name="entire_widget" native="true">
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <layout class="QVBoxLayout" name="water_level"/>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="water_turb"/>
-         </item>
-        </layout>
-       </widget>
+       <layout class="QVBoxLayout" name="big_brother"/>
       </item>
       <item>
        <widget class="QWidget" name="widget_4" native="true">
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="QWidget" name="both" native="true"/>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QLCDNumber" name="water_display1"/>
+           </item>
+           <item>
+            <widget class="QLCDNumber" name="water_display2"/>
+           </item>
+          </layout>
          </item>
          <item>
           <widget class="QWidget" name="widget" native="true">
            <layout class="QVBoxLayout" name="verticalLayout">
             <item>
-             <widget class="QLCDNumber" name="water_display"/>
-            </item>
-            <item>
-             <widget class="QLCDNumber" name="turb_display"/>
-            </item>
-            <item>
              <widget class="QWidget" name="widget_2" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout">
-               <item>
-                <widget class="QPushButton" name="B_btn">
-                 <property name="minimumSize">
-                  <size>
-                   <width>0</width>
-                   <height>50</height>
-                  </size>
-                 </property>
-                 <property name="text">
-                  <string>B</string>
-                 </property>
-                </widget>
-               </item>
                <item>
                 <widget class="QPushButton" name="A_btn">
                  <property name="minimumSize">
@@ -70,6 +49,19 @@
                  </property>
                  <property name="text">
                   <string>A</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="b_btn">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string>B</string>
                  </property>
                 </widget>
                </item>
