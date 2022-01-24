@@ -29,13 +29,10 @@ class main_gui(QWidget):
         self.fig = plt.figure()
         self.canvas = FigureCanvas(self.fig)
         self.ui.big_brother.addWidget(self.canvas)
-        self.fig2 = plt.figure()
-        self.canvas2 = FigureCanvas(self.fig2)
-        
         self.ui.A_btn.clicked.connect(self.th.make_random)
         
         self.ax = self.fig.add_subplot(211, xlim=(-8, 0), ylim=(0, 1024))
-        self.bx = self.fig.add_subplot(212, xlim=(-8, 0), ylim=(0, 1024))
+        self.bx = self.fig.add_subplot(212, xlim=(-6, 0), ylim=(0, 1024))
         
     def water_display(self, srnum):
         self.ui.water_display1.display(srnum)
