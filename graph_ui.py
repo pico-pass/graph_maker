@@ -20,23 +20,51 @@ class main_gui(QWidget):
         super().__init__()
         self.ui = GUI()
         self.ui.setupUi(self)
+        
+        self.fig = plt.Figure()
+        self.canvas = FigureCanvas(self.fig)
+        self.timeInterval = 0.2
+        
+        self.x1 = np.arange(0, 2*np.pi, self.timeInterval)
+        self.y1 = np.sin(self.x1)
+        
+        self.x2 = np.arange(0, 4*np.pi, self.timeInterval)
+        self.y2 = np.sin(self.x2)
+        
         self.th = thread(parent = self)
-        self.th.thread_sg.connect(self.water_display)
+        
         self.init()
         self.show()
     
     def init(self):
-        self.fig = plt.figure()
-        self.canvas = FigureCanvas(self.fig)
         self.ui.big_brother.addWidget(self.canvas)
-        self.ui.A_btn.clicked.connect(self.th.make_random)
         
-        self.ax = self.fig.add_subplot(211, xlim=(-8, 0), ylim=(0, 1024))
-        self.bx = self.fig.add_subplot(212, xlim=(-6, 0), ylim=(0, 1024))
+        self.ax = self.fig.add_subplot(2,1,1)
+        self.line1, = self.ax.plot(self.x1, self.y1)
+        self.bx = self.fig.add_subplot(2,1,2)
+        self.line2, = self.bx.plot(self.x2, self.y2, color='red')
         
-    def water_display(self, srnum):
-        self.ui.water_display1.display(srnum)
+        self.ani1 = anim.FuncAnimation(self.fig, self.animate01, init_func=self.initPlot01, interval=100, blit=False, save_count=50)
+        self.canvas.draw()
+        self.ani2 = anim.FuncAnimation(self.fig, self.animate02, init_func=self.initPlot02, interval=100, blit=False, save_count=50)
+        self.canvas.draw()
         
+    def initPlot01(self):
+        self.line1.set_ydata([np.nan]*len(self.x1))
+        return self.line1,    
+    
+    def initPlot02(self):
+        self.line2.set_ydata([np.nan]*len(self.x2))
+        return self.line2,    
+    
+    def animate01(self, i):        
+        self.line1.set_ydata(np.sin(self.x1 + i * self.timeInterval))
+        return self.line1,
+    
+    def animate02(self, i):        
+        self.line2.set_ydata(np.sin(self.x2 + i * self.timeInterval))
+        return self.line2,
+    
 class thread(QThread):
     thread_sg = pyqtSignal(int)
     def __init__(self, parent = None):
