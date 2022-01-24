@@ -5,8 +5,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from Ui_GUI import Ui_Form as GUI
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.figure import Figure
-import matplotlib.animation as animation
+from matplotlib.figure import fig
+import matplotlib.animation as anim
 import matplotlib.pyplot as plt
 import numpy as np
 import random
@@ -37,6 +37,15 @@ class main_gui(QWidget):
         self.ax = self.fig.add_subplot(211, xlim=(-8, 0), ylim=(0, 1024))
         self.bx = self.fig.add_subplot(212, xlim=(-8, 0), ylim=(0, 1024))
         
+        self.x1 = np.arange(50)
+        self.y1 = np.ones(50, dtype=np.float)*np.nan
+        self.line, = self.canvas.ax.plot(self.x1, self.y1, animated=True, color='blue', lw=2)
+        self.ani = anim.FuncAnimation(self.canvas.figure, self.update_line,blit=True, interval=25)
+        
+        self.x2 = np.arange(50)
+        self.y2 = np.ones(50, dtype=np.float)*np.nan
+        self.line2, = self.canvas.bx.plot(self.x2, self.y2, animated=True, color='purple', lw=2)
+        
     def water_display(self, srnum):
         self.ui.water_display.display(srnum)
         
@@ -56,7 +65,7 @@ class thread(QThread):
             srnum = random.randint(1, 4)
             self.thread_sg.emit(srnum)
             self.Qsleep(0.5)
-            
+    
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = main_gui()
