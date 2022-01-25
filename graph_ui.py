@@ -59,7 +59,7 @@ class main_gui(QWidget):
         return self.line2,    
     
     def animate01(self, i): # 애니메이션 루프 시의 실행
-        self.line1.set_ydata(np.sin(self.x1 + i * self.timeInterval))   # timeInterval 값에 따라 달라지는 y값
+        self.line1.set_ydata(np.cos(self.x1 + i * self.timeInterval))   # timeInterval 값에 따라 달라지는 y값
         return self.line1,
     
     def animate02(self, i): # 애니메이션 루프 시의 실행
