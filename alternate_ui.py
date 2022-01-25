@@ -11,8 +11,8 @@ plt.style.use('fivethirtyeight')
 arduino_sr = serial.Serial('COM5', '9600')
 a = 0
 fig = plt.figure
-levelcode = turbcode = 0
-ax = plt.axes(xlim=(0, 50), ylim=(0, 1024))
+levelcode = 0
+ax = plt.axes(xlim=(0, 50), ylim=(-16, 1024))
 
 max_points = 50
 line, = ax.plot(np.arange(max_points),
@@ -24,17 +24,12 @@ wcount = 0
         
 def worker():
     global levelcode
-    global turbcode
     try:
         if arduino_sr.readable():
             srcode = arduino_sr.readline()
             srcode_i = srcode.decode()
-            if '/' in srcode_i:
-                turbcode = int(srcode_i.split('/')[0])
-                return turbcode
-            elif ',' in srcode_i:
-                levelcode = int(srcode_i.split(',')[0])
-                return levelcode
+            levelcode = int(srcode_i)
+            return levelcode
     except Exception as ex:
         print(ex)
         pass
